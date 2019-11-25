@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model MathContainer
+
+<div class="list">
+    @foreach (var addition in Model.Additions)
+    {
+        <div>@await Html.PartialAsync("_Addition", addition)</div>
+    }
+</div>
+
+<div class="list">
+    @foreach (var sudoku in Model.Sudokus)
+    {
+        <div>@await Html.PartialAsync("_Sudoku", sudoku)</div>
+    }
+</div>

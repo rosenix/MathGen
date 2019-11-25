@@ -1,0 +1,15 @@
+﻿@model List<NumberCollectionLine>
+
+<div class="sudoku">
+    <table class="" cellspacing="2" border="1">
+        @foreach (var line in Model)
+        {
+            <tr>
+                @foreach (var t in line.Numbers)
+                {
+                    <td>@(t == -1 ? string.Empty : t.ToString())</td>
+                }
+            </tr>
+        }
+    </table>
+</div>

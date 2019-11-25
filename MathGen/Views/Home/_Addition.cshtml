@@ -1,0 +1,32 @@
+﻿@model List<NumberCollectionLine>
+
+<table class="addition">
+    @for (var j = 0; j < Model.Count; j += 3)
+    {
+        <tr>
+            @for (var m = j; m < j + 3; m++)
+            {
+                if (m == Model.Count)
+                {
+                    break;
+                }
+
+                var item = Model[m];
+                for (var i = 0; i < item.Count; i++)
+                {
+                    <td>@item.Numbers[i]</td>
+                    @if (i < item.Count - 1)
+                    {
+                        <td>+</td>
+                    }
+                    else
+                    {
+                        <td>=</td>
+                    }
+                }
+                <td></td>
+                <td class="noborder" ></td>
+            }
+        </tr>
+    }
+</table>
