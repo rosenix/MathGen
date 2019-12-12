@@ -9,7 +9,12 @@
         <div>@await Html.PartialAsync("_Addition", addition)</div>
     }
 </div>
-
+<div class="list">
+    @foreach (var subtraction in Model.Subtractions)
+    {
+        <div>@await Html.PartialAsync("_Subtraction", subtraction)</div>
+    }
+</div>
 <div class="list">
     @foreach (var sudoku in Model.Sudokus)
     {

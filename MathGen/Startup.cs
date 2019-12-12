@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MathGen.Configs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,13 +20,15 @@ namespace MathGen
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<AdditionConfig>(Configuration.GetSection("AdditionConfig"));
+            services.Configure<SubtractionConfig>(Configuration.GetSection("SubtractionConfig"));
+            services.Configure<SukoduConfig>(Configuration.GetSection("SukoduConfig"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -37,10 +40,7 @@ namespace MathGen
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

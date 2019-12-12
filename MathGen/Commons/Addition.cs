@@ -7,7 +7,7 @@ namespace MathGen.Commons
     /// <summary>
     /// 加法
     /// </summary>
-    public class AditionBuilder
+    public class AdditionBuilder
     {
         private readonly static Random _random = new Random();
 
@@ -17,12 +17,23 @@ namespace MathGen.Commons
 
         private int _addendCount = 2;
 
-        public AditionBuilder(int sum)
+        /// <summary>
+        /// 加法算子上线，0表示没有
+        /// </summary>
+        private int _itemUpperLimit = 0;
+
+        public AdditionBuilder SetItemUpperLimit(int itemUpper)
+        {
+            _itemUpperLimit = itemUpper;
+            return this;
+        }
+
+        public AdditionBuilder(int sum)
         {
             _sum = sum;
         }
 
-        public AditionBuilder SetAddendCount(int count)
+        public AdditionBuilder SetAddendCount(int count)
         {
             _addendCount = count;
 
@@ -41,7 +52,7 @@ namespace MathGen.Commons
         public List<NumberCollectionLine> Build()
         {
             var list = new List<NumberCollectionLine>();
-            list.AddRange(AddtionAlgorithm.Resolve(_sum, _addendCount).Select(x => new NumberCollectionLine
+            list.AddRange(AdditionAlgorithm.Resolve(_sum, _addendCount).Where(x => x.All(y => y <= _itemUpperLimit)).Select(x => new NumberCollectionLine
             {
                 RowNumber = _random.Next(0, ROW_NUMBER_UPPER),
                 Numbers = x
@@ -49,7 +60,7 @@ namespace MathGen.Commons
             return list;
         }
 
-        private class AddtionAlgorithm
+        private class AdditionAlgorithm
         {
             /// <summary>
             /// 

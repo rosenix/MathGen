@@ -1,15 +1,15 @@
 ﻿
 html, body { font-family: 'Microsoft YaHei' }
-.list { padding-bottom: 20px }
+.list { padding: 20px; padding-top: 0; border: 1px dotted #999; overflow: hidden; width: 810px; margin-top: 20px }
 
 td { font-size: 32px; border-bottom: 1px solid #ccc; }
-.noborder { border-bottom: none; width: 100px }
+.noborder { border-bottom: none; width: 120px }
 
-.addition td { height: 65px; width: 40px; }
+.addition td { height: 65px; width: 50px; }
 
-.sudoku { float: left; padding-right: 20px }
-    .sudoku table { border: 1px solid #ccc;  }
-    .sudoku td { width: 80px; height: 80px; border: 1px solid #999; text-align: center; }
+.sudoku { float: left; padding-right: 80px; margin-top: 10px }
+    .sudoku table { border: 1px solid #ccc; }
+    .sudoku td { width: 70px; height: 70px; border: 1px solid #999; text-align: center; }
 
 
 
